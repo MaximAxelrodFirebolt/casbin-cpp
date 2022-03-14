@@ -45,7 +45,7 @@ class Config : public ConfigInterface {
         void ParseBuffer(std::istream* buf);
 
     public:
-
+        virtual ~Config(){}
         /**
          * NewConfig create an empty configuration representation from file.
          *

@@ -63,7 +63,7 @@ class DefaultRoleManager : public RoleManager {
         std::shared_ptr<Role> CreateRole(std::string name);
 
     public:
-
+        virtual ~DefaultRoleManager(){}
         /**
          * DefaultRoleManager is the constructor for creating an instance of the
          * default RoleManager implementation.

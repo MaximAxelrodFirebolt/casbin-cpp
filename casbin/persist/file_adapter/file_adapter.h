@@ -10,6 +10,8 @@ namespace casbin {
 class FileAdapter : virtual public Adapter {
     public:
 
+        virtual ~FileAdapter(){}
+
         // NewAdapter is the constructor for Adapter.
         FileAdapter(std::string file_path);
 

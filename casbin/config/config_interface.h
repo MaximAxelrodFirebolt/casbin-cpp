@@ -24,7 +24,7 @@ namespace casbin {
 
 class ConfigInterface {
     public:
-
+        virtual ~ConfigInterface(){}
         virtual std::string GetString(std::string_view key) = 0;
         virtual std::vector<std::string> GetStrings(std::string_view key) = 0;
         virtual bool GetBool(std::string_view key) = 0;
