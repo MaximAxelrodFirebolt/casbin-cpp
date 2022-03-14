@@ -9,6 +9,8 @@ namespace casbin {
 class BatchFileAdapter: public BatchAdapter, public FileAdapter {
     public:
 
+        virtual ~BatchFileAdapter(){}
+
         // NewAdapter is the constructor for Adapter.
         BatchFileAdapter(std::string file_path);
 

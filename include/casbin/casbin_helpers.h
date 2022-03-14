@@ -19,6 +19,27 @@
 #ifndef CASBIN_CPP_CASBIN_HELPERS_H
 #define CASBIN_CPP_CASBIN_HELPERS_H
 
+#pragma GCC diagnostic ignored "-Wnewline-eof"
+#pragma GCC diagnostic ignored "-Wshadow-field-in-constructor"
+#pragma GCC diagnostic ignored "-Wnon-virtual-dtor"
+#pragma GCC diagnostic ignored "-Wsuggest-override"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-macros"
+#pragma GCC diagnostic ignored "-Wdeprecated-copy-dtor"
+#pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+#pragma GCC diagnostic ignored "-Wdelete-non-abstract-non-virtual-dtor"
+#pragma GCC diagnostic ignored "-Wdocumentation"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+#pragma GCC diagnostic ignored "-Wshadow"
+#pragma GCC diagnostic ignored "-Wreorder-ctor"
+#pragma GCC diagnostic ignored "-Wextra-semi-stmt"
+#pragma GCC diagnostic ignored "-Wmissing-noreturn"
+#pragma GCC diagnostic ignored "-Wshadow-field"
+#pragma GCC diagnostic ignored "-Wused-but-marked-unused"
+#pragma GCC diagnostic ignored "-Wsometimes-uninitialized"
+
 #include <string>
 #include <vector>
 #include <unordered_map>

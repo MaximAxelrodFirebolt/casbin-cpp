@@ -26,7 +26,7 @@ namespace casbin {
  */
 class DefaultEffector : public Effector{
     public:
-
+        virtual ~DefaultEffector(){}
         /**
          * MergeEffects merges all matching results collected by the enforcer into a single decision.
          */

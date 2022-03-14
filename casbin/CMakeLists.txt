@@ -78,7 +78,7 @@ target_include_directories(casbin PRIVATE ${CASBIN_SOURCE_DIR})
 
 set_target_properties(casbin PROPERTIES 
     PREFIX ""
-    VERSION ${CMAKE_PROJECT_VERSION}
+    VERSION 3.19
 )
 
 if(WIN32 OR MSVC)
