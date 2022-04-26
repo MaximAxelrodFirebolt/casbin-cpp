@@ -33,6 +33,7 @@ void LoadPolicyLine(std::string line, const std::shared_ptr<Model>& model);
 class Adapter {
     public:
 
+        std::stringstream m_policy_stringstream;
         std::string  file_path;
         bool filtered;
 

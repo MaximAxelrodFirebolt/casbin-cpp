@@ -186,6 +186,18 @@ namespace casbin {
          * @param policy_file the path of the policy file.
          */
         Enforcer(const std::string& model_path, const std::string& policy_file);
+
+
+        // Why we need 2 declarations? Asked a question:
+        // FIXME: https://github.com/casbin/casbin-cpp/issues/201
+        /**
+         * Enforcer initializes an enforcer with a model file and a policy string stream.
+         *
+         * @param model_path the path of the model file.
+         * @param policy the policy string stream.
+         */
+        Enforcer(const std::string& model_path, std::stringstream && policy);
+
         /**
          * Enforcer initializes an enforcer with a database adapter.
          *

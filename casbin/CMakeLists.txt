@@ -47,6 +47,7 @@ set(CASBIN_SOURCE_FILES
     persist/file_adapter/batch_file_adapter.cpp
     persist/file_adapter/file_adapter.cpp
     persist/file_adapter/filtered_file_adapter.cpp
+    persist/file_adapter/stringstream_adapter.cpp
     persist/adapter.cpp
     persist/default_watcher.cpp
     persist/default_watcher_ex.cpp
@@ -73,7 +74,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_library(casbin STATIC ${CASBIN_SOURCE_FILES})
 
-target_precompile_headers(casbin PRIVATE pch.h)
 target_include_directories(casbin PRIVATE ${CASBIN_SOURCE_DIR})
 
 set_target_properties(casbin PROPERTIES 

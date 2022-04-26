@@ -25,6 +25,7 @@
 #include "./enforcer.h"
 #include "./persist/watcher_ex.h"
 #include "./persist/file_adapter/file_adapter.h"
+#include "./persist/file_adapter/stringstream_adapter.h"
 #include "./persist/file_adapter/batch_file_adapter.h"
 #include "./rbac/default_role_manager.h"
 #include "./effect/default_effector.h"
@@ -184,6 +185,17 @@ Enforcer ::Enforcer(const std::string& model_path, const std::string& policy_fil
 }
 
 /**
+ * Enforcer initializes an enforcer with a model file and a policy string stream.
+ *
+ * @param model_path the path of the model file.
+ * @param policy the policy string stream.
+ */
+Enforcer :: Enforcer(const std::string& model_path, std::stringstream && policy)
+    : Enforcer(std::make_shared<Model>(model_path), std::make_shared<StringstreamAdapter>(std::move(policy))) {   
+    m_model_path = model_path;
+}
+
+/**
  * Enforcer initializes an enforcer with a database adapter.
  *
  * @param model_path the path of the model file.
@@ -206,8 +218,31 @@ Enforcer::Enforcer(const std::shared_ptr<Model>& m, std::shared_ptr<Adapter> ada
 
     this->Initialize();
 
-    if (m_adapter && m_adapter->file_path != "")
-        this->LoadPolicy();
+    // load policy if needed
+    if (m_adapter)
+    {
+        // try understand if we should load policy now, this depends on a type of the adapter
+        bool loadPolicyNow = false;
+
+        /* It was better to add function ShouldLoadPolicyNow() for all adapters, 
+         * but it is too big change for this task.
+         */
+
+        // verify if it is stringstream adapter
+        auto downcastedPtr = std::dynamic_pointer_cast<StringstreamAdapter>(m_adapter);
+        if(downcastedPtr)
+        {
+            // for StringstreamAdapter we load policy if we have bytes in stream
+            loadPolicyNow = (m_adapter->m_policy_stringstream.rdbuf()->in_avail() > 0);
+        } else {
+            // for other types of adapters we load policy if we have file path
+            loadPolicyNow = (m_adapter->file_path != "");
+        }
+
+        if (loadPolicyNow) {
+            this->LoadPolicy();
+        }
+    }
 }
 
 /**
